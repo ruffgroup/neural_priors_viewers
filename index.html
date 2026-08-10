@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Numerosity receptive fields — interactive brain viewers</title>
+<style>
+  :root { color-scheme: light; }
+  body {
+    margin: 0; background: #fafafa; color: #222;
+    font: 16px/1.6 'Helvetica Neue', Arial, sans-serif;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 40px 24px 80px; }
+  h1 { font-size: 26px; line-height: 1.3; margin: 0 0 4px; }
+  .subtitle { color: #555; margin: 0 0 24px; }
+  .paper {
+    background: #fff; border: 1px solid #ddd; border-radius: 8px;
+    padding: 18px 22px; margin-bottom: 32px;
+  }
+  .paper a { color: #1a5276; text-decoration: none; }
+  .paper a:hover { text-decoration: underline; }
+  .authors { margin: 6px 0 0; color: #444; }
+  .note { font-size: 14px; color: #666; margin-top: 10px; }
+  h2 { font-size: 19px; margin: 28px 0 12px; }
+  .grid {
+    display: grid; gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  }
+  .grid a {
+    display: block; text-align: center; padding: 12px 0;
+    background: #fff; border: 1px solid #ddd; border-radius: 6px;
+    color: #1a5276; text-decoration: none; font-weight: 600;
+  }
+  .grid a:hover { background: #eef4f8; border-color: #1a5276; }
+  kbd { font-weight: 700; }
+  footer { margin-top: 48px; font-size: 13px; color: #888; }
+  footer a { color: #1a5276; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Numerosity receptive fields in human parietal cortex</h1>
+  <p class="subtitle">Interactive per-participant cortical surface viewers</p>
+
+  <div class="paper">
+    <b><a href="https://doi.org/10.1101/2025.09.25.675916" target="_blank">
+    Distributed range adaptation in human parietal encoding of numbers</a></b>
+    <p class="authors">Arthur Prat-Carrabin*, Gilles de Hollander*,
+    Saurabh Bedi, Samuel J. Gershman &amp; Christian C. Ruff
+    (bioRxiv, 2025; * shared first authorship)</p>
+    <p class="note">
+      In this study, participants estimated the number of dots in briefly
+      presented clouds, while the range of presented numerosities switched
+      between a narrow and a wide range across blocks. Numerosity
+      receptive-field models were fitted to 3T fMRI responses, yielding a
+      preferred numerosity (&mu;) for every point on each participant's
+      cortical surface, separately for the two range conditions.
+    </p>
+    <p class="note">
+      Each viewer below shows, on the participant's own (inflatable)
+      cortical surface: the preferred numerosity (&mu;, nipy_spectral
+      colormap) in the narrow and wide conditions, the tuning width
+      (&sigma; in log space, viridis colormap) and the cross-validated
+      explained variance of the encoding model (cvR&sup2;, plasma
+      colormap). Three models are included: model&nbsp;3 (receptive-field
+      shift fitted freely per voxel, whole brain), model&nbsp;31 (the
+      paper's winning model, with fixed tuning-width scaling) and
+      model&nbsp;14 (tuning width free per voxel); models 31 and 14 were
+      fitted only within the right numerosity parietal cortex (NPCr) and
+      are shown only there. The white contour on every map marks NPCr.
+      Vertices are colored where cvR&sup2;&nbsp;&gt;&nbsp;0 and
+      5&nbsp;&le;&nbsp;&mu;&nbsp;&le;&nbsp;25. A collapsible panel in each
+      viewer shows an interactive per-voxel scatter of &mu; and &sigma;
+      (narrow vs wide) for all three models; selecting a model or
+      parameter there also switches the brain map shown.
+    </p>
+    <p class="note">
+      In a viewer, rotate with the mouse, press <kbd>i</kbd>/<kbd>f</kbd>
+      to inflate or flatten the surface (&ldquo;flat&rdquo; here means
+      fully inflated, not a cut-open flatmap), and press
+      <kbd>+</kbd>/<kbd>&minus;</kbd> to step through the maps. Viewers are
+      built with
+      <a href="https://github.com/gallantlab/pycortex" target="_blank">pycortex</a>.
+    </p>
+  </div>
+
+  <h2>Participants</h2>
+  <div class="grid" id="subjects"></div>
+
+  <footer>
+    Analysis code: <a href="https://github.com/ruffgroup/neural_priors"
+    target="_blank">ruffgroup/neural_priors</a> &middot;
+    Contact: <a href="https://gilles86.github.io" target="_blank">Gilles de Hollander</a>
+  </footer>
+</div>
+<script>
+  const subjects = ["01","02","03","04","05","06","07","08","09","10",
+                    "12","13","14","15","16","17","18","19","20","21",
+                    "22","24","25","26","27","28","29","30","31","32",
+                    "33","34","35","36","37","38","39","40","41"];
+  const grid = document.getElementById('subjects');
+  for (const s of subjects) {
+    const a = document.createElement('a');
+    a.href = `model3/sub-${s}/index.html`;
+    a.textContent = `sub-${s}`;
+    grid.appendChild(a);
+  }
+</script>
+</body>
+</html>
