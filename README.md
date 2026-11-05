@@ -5,9 +5,9 @@ WebGL viewers of numerosity receptive field parameters for all 39
 participants of:
 
 > Prat-Carrabin A.\*, de Hollander G.\*, Bedi S., Gershman S.J., &
-> Ruff C.C. (2025). *Distributed range adaptation in human parietal
-> encoding of numbers.* bioRxiv.
-> [10.1101/2025.09.25.675916](https://doi.org/10.1101/2025.09.25.675916)
+> Ruff C.C. (2026). *Distributed range adaptation in human parietal
+> encoding of numbers.* Nature Communications.
+> [10.1038/s41467-026-78851-9](https://doi.org/10.1038/s41467-026-78851-9)
 
 Browse the viewers at **https://ruffgroup.github.io/neural_priors_viewers/**
 
